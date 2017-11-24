@@ -1,0 +1,37 @@
+<button class="btn btn-default" (click)="modal.show()">Add channel</button>
+<div class="modal fade" bsModal #modal="bs-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form class="modal-content" (ngSubmit)="save()" #f="ngForm">
+            <div class="modal-header">
+                <button type="button" class="close" aria-label="Close" (click)="modal.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Nouveau Channel</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !channel.valid || existingChannel}" >
+                    <label for="name">Nom</label>
+                    <input type="text" class="form-control" name="channel" [(ngModel)]="model.channel" #channel="ngModel" required />
+                    <div *ngIf="f.submitted && channel.pristine" class="help-block">Nom requis</div>
+                    <div *ngIf="f.submitted && existingChannel" class="help-block">Nom existe déjà</div>
+                    <div *ngIf="f.submitted && channel.dirty && channel.invalid" class="help-block">Nom invalide</div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" (click)="modal.hide()">Annuler</button>
+                <button type="button" class="btn btn-primary" type="submit" [disabled]="f.form.invalid">Valider</button>
+            </div>
+        </form>
+    </div>
+</div>
+<style>
+    :host {
+        display: block;
+        text-align: center;
+        padding: 15px;
+    }
+
+    .modal {
+        text-align: left;
+    }
+</style>

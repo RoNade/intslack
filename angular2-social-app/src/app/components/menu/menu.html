@@ -1,0 +1,27 @@
+<nav class="list-group">
+    <add-channel></add-channel>
+    <!-- channel links  -->
+    <ul class="list-group">
+        <a class="list-group-item" *ngFor="let channel of channels" [routerLink]="'/channel/' + channel.id">
+            <li >{{channel.name}}</li>
+        </a>
+    </ul>
+    
+</nav>
+
+<style>
+    .list-group-item {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .list-group-item li {
+        text-align: center;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    :host {
+        display: block;
+        padding: 0;
+        margin: 0;
+    }
+</style>
