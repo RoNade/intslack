@@ -66,6 +66,10 @@ export abstract class PostContent<T> {
     }
 }
 
+export abstract class CommentContent<T> extends PostContent<T>{
+    postContent?: PostContent<T>;
+}
+
 export type MediaContent = {
     mediaUrl: string,
 }
@@ -82,6 +86,14 @@ export class VideoPostContent extends PostContent<MediaContent>{
     }
 }
 
+export class VideoCommentContent extends CommentContent<MediaContent>{
+    constructor(videoUrl:string) {
+        super('video', {
+            mediaUrl: videoUrl
+        });
+    }
+}
+
 export class PicturePostContent extends PostContent<MediaContent>{
     constructor(pictureUrl:string) {
         super('picture', {
@@ -90,7 +102,23 @@ export class PicturePostContent extends PostContent<MediaContent>{
     }
 }
 
+export class PictureCommentContent extends CommentContent<MediaContent>{
+    constructor(pictureUrl:string) {
+        super('picture', {
+            mediaUrl: pictureUrl
+        });
+    }
+}
+
 export class YoutubePostContent extends PostContent<YoutubeContent>{
+    constructor(videoId:string) {
+        super('youtube', {
+            videoId: videoId
+        });
+    }
+}
+
+export class YoutubeCommentContent extends CommentContent<YoutubeContent>{
     constructor(videoId:string) {
         super('youtube', {
             videoId: videoId

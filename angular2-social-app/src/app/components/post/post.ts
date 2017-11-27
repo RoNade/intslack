@@ -1,5 +1,5 @@
-import { Component, Input, Output } from '@angular/core';
-import { Post, Like, PicturePostContent, VideoPostContent, YoutubePostContent } from 'models';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import { Post, Like, PicturePostContent, VideoPostContent, YoutubePostContent, Comment } from 'models';
 import { PostService, PostSocketService, LoggedUser, MessageParser } from 'services';
 
 /**
@@ -15,6 +15,7 @@ export class PostComponent {
     picturePostContents: PicturePostContent[];
     youtubePostContents: YoutubePostContent[];
     videoPostContents: VideoPostContent[];
+    comments: Comment[];
     
     constructor(
         private postSocket: PostSocketService, 
@@ -41,9 +42,14 @@ export class PostComponent {
                 .filter(postContent => postContent.type === 'video');
             // console.log('VIDEOPOST', this.videoPostContents);
         }
-        
 
-        this.postSocket.onLike(async (like) => {
+        this.comments = this.post.comments;
+
+        this.postSocket.onComment(async (comment: Comment) => {
+            this.comments.push(comment);
+        });
+
+        this.postSocket.onLike(async (like: Like) => {
             try {
                 await this.postService.like(like.post);
 
@@ -74,6 +80,12 @@ export class PostComponent {
      * Send the new post message to the server
      * @param message message to send
      */
-    onComment(message: string) {
+    async onComment(message: string) {
+        try {
+            await this.postService.comment(this.post, message);
+        }
+        catch(err) {
+            throw new Error(err);
+        }
     }
 }

@@ -1,0 +1,109 @@
+<div class="header">
+    <div class="user-picture">
+        <p>
+            <img [src]="comment.user.pictureUrl" alt="user's avatar"/>
+        </p>
+    </div>
+    <div class="username">
+        <p>
+            <!-- comment.user.username here -->
+            {{comment.user.username}}
+        </p>
+    </div>
+    <div class="right">
+        <div class="date">
+            <!-- comment.creationTime here -->
+            {{comment.creationTime | date: 'dd/MM/yyyy @ HH:mm:ss'}}
+        </div>
+    </div>
+</div>
+<div class="body">
+    <!-- comment.content here -->
+    <ng-container *ngIf="comment.content && pictureCommentContents.length > 0">
+        <div class="pictureCommentContainer" *ngFor="let pictureCommentContent of pictureCommentContents">
+            <picture-comment-content [commentContent]="pictureCommentContent"></picture-comment-content>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="comment.content && youtubeCommentContents.length > 0">
+        <div class="youtubeCommentContainer" *ngFor="let youtubeCommentContent of youtubeCommentContents">
+            <youtube-comment-content [commentContent]="youtubeCommentContent"></youtube-comment-content>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="comment.content && videoCommentContents.length > 0">
+        <div class="videoCommentContainer" *ngFor="let videoCommentContent of videoCommentContents">
+            <video-comment-content [commentContent]="videoCommentContent"></video-comment-content>
+        </div>
+    </ng-container>
+    <!-- comment.message here -->
+    <div class="messageCommentContainer" *ngIf="comment.message">
+        <pre class="message" [innerHTML]="comment.message"></pre>
+    </div>
+</div>
+<style>
+    .header, .body {
+        height: auto;
+        width: 400px;
+        font-size: 0.9em;
+        padding-left: 5px;
+        padding-right: 5px;
+        border-radius: 2px;
+        border-right: 1px solid lightgrey;
+        border-left: 1px solid lightgrey;
+    }
+    .header {
+        margin-top: 3px;
+        padding-top: 5px;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+        border-top: 1px solid lightgrey;
+    }
+    .body {
+        text-align: center;
+        margin-bottom: 3px;
+        padding-bottom: 5px;
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+        border-bottom: 1px solid lightgrey;
+    }
+
+    .username {
+        font-weight: bold;
+        padding: 0 15px;
+    }
+
+    .user-picture {
+        width: 20px;
+        height: 20px;
+        border-radius: 1px;
+    }
+
+    .user-picture p img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    .header {
+        padding: 5px;
+        display: flex;
+    }
+
+    .right {
+        width: 100%;
+        display: flex;
+        /*align-items: center;*/
+        justify-content: flex-end;
+    }
+
+    .right>.date {
+        padding-left: 5px;
+    }
+
+    pre.message {
+        margin: 0;
+        border: none;
+        background: none;
+        white-space: normal;
+        word-break: keep-all;
+        padding-bottom: 5px;
+    }
+</style>

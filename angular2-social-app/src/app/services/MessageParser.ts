@@ -66,7 +66,7 @@ export class MessageParser {
         });
         
         // Transform remaining url in links
-        const urlRegex = /(http[s]?:\/\/(?:www.)?[a-z0-9_.-]+\.[a-z0-9]{2,4}(?:\/[a-z0-9_.-]+)*)(?:\?[a-z0-9&=+_%.-]+)*/gmi;
+        const urlRegex = /(http[s]?:\/\/(?:www.)?[a-z0-9_.-]+\.[a-z0-9]{2,4}(?:\/[a-z0-9_.=-]+)*)(?:\?[a-z0-9&=+_%.-]+)*/gmi;
         let urlMatche = urlRegex.exec(post.message);
         contentToReplace = [];
 

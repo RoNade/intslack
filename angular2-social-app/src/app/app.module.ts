@@ -21,12 +21,15 @@ import { authenticatedHttpFactory } from './services/AuthenticatedHttp'
         components.PostCommentComponent,
         components.PostComponent,
         components.PictureFeedContentComponent,
+        components.PictureCommentContentComponent,
         components.RegisterComponent,
         components.SocialAppComponent,
         components.SocialFeedComponent,
         components.UserInputsComponent,
         components.VideoFeedContentComponent,
+        components.VideoCommentContentComponent,
         components.YoutubeFeedContentComponent,
+        components.YoutubeCommentContentComponent
     ],
     imports: [
         BrowserModule,
