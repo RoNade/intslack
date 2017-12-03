@@ -28,6 +28,7 @@ export class PostComponent {
         this.post.content = this.parser.parse(this.post);
         // console.log('CONTENT', this.post.content);
         // console.log('MESSAGE', this.post.message);
+        this.comments = this.post.comments;
 
         if(this.post.content) {
             this.picturePostContents = this.post.content
@@ -43,43 +44,24 @@ export class PostComponent {
             // console.log('VIDEOPOST', this.videoPostContents);
         }
 
-        this.comments = this.post.comments;
-
         this.postSocket.onComment(async (comment: Comment) => {
             this.comments.push(comment);
         });
 
         this.postSocket.onLike(async (like: Like) => {
-            try {
-                await this.postService.like(like.post);
-
-                if(!this.post.liked) {
-                    this.post.liked = true;
-                }
-            }
-            catch(err) {
-                throw new Error(err);
-            }
+            this.post.liked = like !== null;
         });
     }
 
     async onLike() {
         try {
             await this.postService.like(this.post);
-
-            if(!this.post.liked) {
-                this.post.liked = true;
-            }
         }
         catch(err) {
             throw new Error(err);
         } 
     }
 
-    /**
-     * Send the new post message to the server
-     * @param message message to send
-     */
     async onComment(message: string) {
         try {
             await this.postService.comment(this.post, message);

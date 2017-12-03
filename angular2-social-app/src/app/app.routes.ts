@@ -3,7 +3,7 @@ import { LoginComponent, RegisterComponent, SocialAppComponent, SocialFeedCompon
 import { AuthGuard } from './services/AuthGuard';
 
 export const rootRouterConfig: Routes = [
-    { path: '', redirectTo: '/channel', pathMatch: 'full' },
+    { path: '', redirectTo: '/login', pathMatch: 'full' },
     { path: 'channel', 
         component: SocialAppComponent, 
         canActivate: [AuthGuard],

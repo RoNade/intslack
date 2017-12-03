@@ -54,6 +54,13 @@
     <user-inputs [channelId]="channelId" (submitted)="onComment($event)"></user-inputs>
 </div>
 <style>
+    post-comment {
+        display: flex;
+        font-size: 0.9em;
+        flex-direction: column;
+        justify-content: center;
+    }
+
     :host {
         background: white;
         display: block;
@@ -73,6 +80,7 @@
     }
 
     .videoFeedContainer,
+    .pictureFeedContainer,
     .messageFeedContainer,
     .youtubeFeedContainer {
         height: auto;

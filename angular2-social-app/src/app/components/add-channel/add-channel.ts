@@ -27,14 +27,11 @@ export class AddChannelComponent {
 
     async save() {
         if (this.ngForm.valid) {
-            // this.modal.hide() to close the dialog
             try {
                 const channels = await this.channelService.getAll();
 
-                channels.forEach(channel => {
-                    if(channel.name === this.model.channel) {
-                        this.existingChannel = true;
-                    }
+                this.existingChannel = channels.some(channel => {
+                    return channel.name === this.model.channel;
                 });
 
                 if(!this.existingChannel) {
