@@ -52,6 +52,7 @@ import { authenticatedHttpFactory } from './services/AuthenticatedHttp'
         services.PostService,
         services.PostSocketService,
         services.MessageParser,
+        services.NotificationService,
         services.AuthenticationService,
         {
             provide: services.LoggedUser,

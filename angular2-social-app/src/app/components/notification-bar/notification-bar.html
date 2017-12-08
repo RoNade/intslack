@@ -1,4 +1,13 @@
-
+<div class="notificationContainer">
+    <!-- activity here -->
+    <ng-container *ngIf="notifications && notifications.length > 0">
+        <div class="activityFeedContainer" *ngFor="let notification of notifications">
+            <p class="notification">
+                <span>{{notification.creationTime | date: 'dd/MM/yyyy @ HH:mm:ss'}}</span> - {{notification.message}}
+            </p>
+        </div>
+    </ng-container>
+</div>
 <style>
     :host {
         display: block;

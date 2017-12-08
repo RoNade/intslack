@@ -54,6 +54,11 @@ export class Like  {
     post: Post;
 }
 
+export class Notification {
+    message: string;
+    creationTime: number;
+}
+
 export abstract class PostContent<T> {
     type:string;
     value: T;

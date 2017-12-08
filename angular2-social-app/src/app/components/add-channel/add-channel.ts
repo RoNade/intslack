@@ -28,7 +28,7 @@ export class AddChannelComponent {
     async save() {
         if (this.ngForm.valid) {
             try {
-                const channels = await this.channelService.getAll();
+                const channels: Channel[] = await this.channelService.getAll();
 
                 this.existingChannel = channels.some(channel => {
                     return channel.name === this.model.channel;
