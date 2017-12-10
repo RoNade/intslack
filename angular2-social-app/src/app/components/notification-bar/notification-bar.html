@@ -1,4 +1,6 @@
 <div class="notificationContainer">
+    <h1>Activity</h1>
+    <button class="btn-danger" (click)="clean()">clear</button>
     <!-- activity here -->
     <ng-container *ngIf="notifications && notifications.length > 0">
         <div class="activityFeedContainer" *ngFor="let notification of notifications">
@@ -9,6 +11,14 @@
     </ng-container>
 </div>
 <style>
+    h1 {
+        text-align: center;
+    }
+    button {
+        margin-bottom: 10px;
+        font-weight: bold;
+        width: 180px;
+    }
     :host {
         display: block;
         height: 100%;
@@ -16,5 +26,14 @@
         background: white;
         flex-shrink: 0;
         border-left: 1px solid #d6d6d6;
+    }
+    .notificationContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+    }
+    .activityFeedContainer {
+        text-align: center;
     }
 </style>

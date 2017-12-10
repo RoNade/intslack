@@ -25,10 +25,11 @@ export class PostComponent {
     ) {}
 
     ngOnInit() {
+        // console.log('POST', this.post);
         this.post.content = this.parser.parse(this.post);
         // console.log('CONTENT', this.post.content);
         // console.log('MESSAGE', this.post.message);
-        this.comments = this.post.comments;
+        this.comments = this.post.comments.reverse();
 
         if(this.post.content) {
             this.picturePostContents = this.post.content
@@ -45,10 +46,12 @@ export class PostComponent {
         }
 
         this.postSocket.onComment(async (comment: Comment) => {
-            this.comments.push(comment);
+            // console.log('COMMENT', comment);
+            if(comment.post.id === this.post.id) this.comments.unshift(comment);
         });
 
         this.postSocket.onLike(async (like: Like) => {
+            // console.log('LIKE', like);
             this.post.liked = like !== null;
         });
     }

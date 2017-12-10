@@ -5,7 +5,7 @@
     <div class="social-app-body-content">
         <router-outlet></router-outlet>
     </div>
-    <notification-bar></notification-bar>
+    <notification-bar class="social-app-notification-panel"></notification-bar>
 </main>
 <style>
     :host{
@@ -24,12 +24,9 @@
         width: 200px;
         flex-shrink: 0;
     }
-    .social-app {
-        display: flex;
-    }
     .social-app-notification-panel {
         width: 200px;
-        flex-shrink: 0;
+
     }
     .social-app-body-content {
         flex: 1;

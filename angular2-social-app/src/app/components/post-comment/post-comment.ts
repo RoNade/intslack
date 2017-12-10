@@ -34,7 +34,7 @@ export class PostCommentComponent{
 
             this.videoCommentContents = this.comment.content
                 .filter(commentContent => commentContent.type === 'video');
-            console.log('VIDEOCOMMENT', this.videoCommentContents);
+            // console.log('VIDEOCOMMENT', this.videoCommentContents);
         }
     }
 }
