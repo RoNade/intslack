@@ -1,15 +1,17 @@
-import { NgModule } from '@angular/core'
+import { NgModule } from '@angular/core';
+import { AUTH_PROVIDERS } from 'angular2-jwt';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule, Http, RequestOptions } from '@angular/http';
-import { AUTH_PROVIDERS } from 'angular2-jwt';
+import { SimpleNotificationsModule } from 'angular2-notifications';
 import { ModalModule, AccordionModule } from 'ngx-bootstrap';
 import { rootRouterConfig } from './app.routes';
 import * as components from './components';
 import * as services from 'services';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-import { authenticatedHttpFactory } from './services/AuthenticatedHttp'
+import { authenticatedHttpFactory } from './services/AuthenticatedHttp';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [
@@ -36,6 +38,8 @@ import { authenticatedHttpFactory } from './services/AuthenticatedHttp'
         FormsModule,
         ReactiveFormsModule,
         HttpModule,
+        BrowserAnimationsModule,
+        SimpleNotificationsModule.forRoot(),
         AccordionModule.forRoot(),
         ModalModule.forRoot(),
         RouterModule.forRoot(rootRouterConfig)

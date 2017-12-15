@@ -1,15 +1,13 @@
 import { Injectable } from '@angular/core';
 import { AuthenticatedHttp } from './AuthenticatedHttp';
 import { ServerConfiguration } from './ServerConfiguration';
-import { LoggedUser } from './User';
 import { Channel } from 'models';
 
 @Injectable()
 export class ChannelService {
     
      constructor(
-        private http: AuthenticatedHttp, 
-        private user: LoggedUser, 
+        private http: AuthenticatedHttp,
         private config: ServerConfiguration
     ) { }
 

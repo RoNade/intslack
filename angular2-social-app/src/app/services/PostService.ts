@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AuthenticatedHttp } from './AuthenticatedHttp';
 import { ServerConfiguration } from './ServerConfiguration';
 import { LoggedUser } from './User';
-import { Post, Like } from '../models';
+import { Post} from '../models';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()

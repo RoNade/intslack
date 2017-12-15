@@ -11,3 +11,7 @@ import '@angular/router';
 
 // RxJS
 import 'rxjs';
+
+// Angular notifications
+import 'angular2-notifications';
+

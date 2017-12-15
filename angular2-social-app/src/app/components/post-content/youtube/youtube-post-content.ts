@@ -1,6 +1,6 @@
-import { Component, Input, Pipe } from '@angular/core';
-import { PostContent, YoutubePostContent } from 'models';
 import { DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
+import { Component, Input } from '@angular/core';
+import { YoutubePostContent } from 'models';
 
 @Component({
     templateUrl: 'youtube-post-content.html',
@@ -19,10 +19,4 @@ export class YoutubeFeedContentComponent {
         // sanitization via method is causing unending refresh of the embbeded video hence the setting of a property on init
         this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(`https://www.youtube.com/embed/${this.postContent.value.videoId}`);
     }
-
-    /* 
-    get url() {
-        return this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + this.postContent.value.videoId);
-    }
-    */
 }

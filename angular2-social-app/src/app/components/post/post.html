@@ -48,7 +48,7 @@
     <!-- Comments here -->
     <ng-container *ngIf="comments && comments.length > 0">
         <div class="commentFeedContainer" *ngFor="let comment of comments">
-            <post-comment [comment]="comment"></post-comment>
+            <post-comment [id]="comment.id" [comment]="comment"></post-comment>
         </div>
     </ng-container>
     <user-inputs [channelId]="channelId" (submitted)="onComment($event)"></user-inputs>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
 import { PostSocketService, PostService } from 'services';
-import { Post, PostContent } from 'models';
+import { Post } from 'models';
 
 /**
  * 

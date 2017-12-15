@@ -22,8 +22,9 @@ export class LoginComponent  {
 
     async login() {
         this.failed = false;
-        // use authService to authenticate and router to redirect
+
         try {
+            // use authService to authenticate and router to redirect
             const authenticatedUser : AuthenticatedUser = await this.authService.authenticate(this.model);
             if(authenticatedUser) return this.router.navigate(['/channel']);
         }

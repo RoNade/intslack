@@ -1,22 +1,31 @@
 <div class="notificationContainer">
+    <!-- chrome notifications -->
+    <simple-notifications [options]="options"></simple-notifications>
+    <!-- activity here -->
     <h1>Activity</h1>
     <button class="btn-danger" (click)="clean()">clear</button>
-    <!-- activity here -->
     <ng-container *ngIf="notifications && notifications.length > 0">
-        <div class="activityFeedContainer" *ngFor="let notification of notifications">
-            <p class="notification">
-                <span>{{notification.creationTime | date: 'dd/MM/yyyy @ HH:mm:ss'}}</span> - {{notification.message}}
-            </p>
+        <div class="activityContainer">
+            <div class="activityFeedContainer" *ngFor="let notification of notifications">
+                <p class="notification">
+                    <span>{{notification.creationTime | date: 'dd/MM/yyyy @ HH:mm:ss'}}</span> - <span [innerHTML]="notification.message"></span>
+                </p>
+            </div>
         </div>
     </ng-container>
 </div>
 <style>
+    ::-webkit-scrollbar {
+        width: 0px;
+        background: transparent;
+    }
     h1 {
         text-align: center;
     }
     button {
         margin-bottom: 10px;
         font-weight: bold;
+        height: 40px;
         width: 180px;
     }
     :host {
@@ -32,6 +41,10 @@
         flex-direction: column;
         align-items: center;
         height: 100%;
+    }
+    .activityContainer {
+        height: 100%;
+        overflow: scroll;
     }
     .activityFeedContainer {
         text-align: center;
